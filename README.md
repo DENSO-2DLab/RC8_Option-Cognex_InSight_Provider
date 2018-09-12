@@ -1,18 +1,17 @@
-# <REPO NAME>
+# RC8 Option - Cognex InSight Provider
 
-RC8 Driver for the ATI Force/Torque sensor
-
-- [Release Page](<Release page link>)
+Test code on how to use Cognex Insight Provider for RC8
 
 ### Contents
 
-<REPO DESCRIPTION>
+Sample code on how to use the Cognex InSight Provider on the RC8 Controller
 
 ### Contributing 
 
 Feel free to contribute by fixing any bugs and adding new features to this repository. 
 Once you are ready to share open a new pull request or generate an Issue. 
-- [Submit an Issue](<issues page link>)
+
+- [Submit an Issue](https://github.com/DENSO-2DLab/RC8_Option-Cognex_InSight_Provider/issues)
 
 ### License 
 

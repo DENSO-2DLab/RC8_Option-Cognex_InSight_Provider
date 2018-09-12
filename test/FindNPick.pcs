@@ -1,0 +1,54 @@
+'!TITLE "Denso robot program"
+
+Sub Main
+	'Provider Handler
+	Dim caoCognex As Object
+	Dim camSessionName As String = "InSight"	'If you are connecting two or 
+												'more cameras every session name 
+												'has to be different
+	Dim camIPAddr As String = "192.168.0.3"
+	
+	'Cognex Output Variables
+	Dim vntResult As String 	'Part Found State
+	Dim xComp As String			'New Part X Value
+	Dim yComp As String			'New Part Y Value
+
+	'Start Cognex Provider (Connect to Camera)
+	caoCognex = cao.AddController(camSessionName, "CaoProv.Cognex.In-Sight", "",_
+								  "Conn=eth:"+camIPAddr+",Timeout = 1000")
+
+	
+	'---GET IMAGE---
+	'We are using the Native mode commands via the provider. 
+	
+	'Send Trigger Signal to Camera
+	vntResult = caoCognex.NativeMode("SE8", "BSTR=True")
+	Delay 400
+	
+	'Read Cell C24 from In-Sight Spreadsheet
+	xcomp = caoCognex.GetValue("C", 24)
+	
+	'Save returned value into the X element of P70
+	LetX P[70] = Val(xComp)
+	
+	'Read Cell D24 from In-Sight Spreadsheet
+	ycomp = caoCognex.GetValue("D", 24)
+	
+	'Save returned value into the Y element of P70
+	LetY P[70] = Val(yComp)
+
+	'---ROBOT MOTION STARTS---
+	Takearm Keep = 0
+	ChangeTool 1
+	ChangeWork 0
+	
+	'Move Arm to Home Position
+	Move P, @0 P[0]
+	ChangeWork 1
+	
+	'Pick new found part
+	Approach P, P[70], @P 25
+	Move L, @C P[70]
+	Delay 1000
+	Depart L, @P 25
+End Sub

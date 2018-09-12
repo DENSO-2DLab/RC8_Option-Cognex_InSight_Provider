@@ -19,10 +19,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-### Release Notes 
+### Additional Resources
 
-**v0.0.1** 
-- Note 1...
-- Note 2...
-- Note 3...
-
+- [Cognex InSight Provider Guide] (https://www.fa-manuals.denso-wave.com/subfolder/en/usermanuals/img/005927/In-Sight_Provider_en.pdf)
+- [Sample Data of Providers] (https://www.fa-manuals.denso-wave.com/en/usermanuals/001091/)
